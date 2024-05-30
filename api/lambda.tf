@@ -19,7 +19,7 @@ resource "aws_lambda_function" "api_lambda" {
 }
 
 resource "aws_iam_role" "lambda_exec" {
-  name = "lambda_exec_role"
+  name = "${var.prefix}_lambda_exec_role"
 
   assume_role_policy = jsonencode({
     Version   = "2012-10-17"
