@@ -8,6 +8,11 @@ variable "prefix" {
   default     = "example"
 }
 
+variable "domain_name"{
+  description = "Domain name for the CloudFront distribution"
+  default     = "example.com"
+}
+
 variable "stage" {
   description = "Stage of the deployment"
   default     = "prod"
@@ -21,4 +26,12 @@ variable "api_path" {
 variable "ui_path" {
   description = "Path to the React app"
   default     = "../frontend"
+}
+
+variable "certificate_arn" {
+  description = "ARN of the ACM certificate for the CloudFront distribution"
+}
+
+variable "zone_id" {
+  description = "Route 53 zone ID"
 }

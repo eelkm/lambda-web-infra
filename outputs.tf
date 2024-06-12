@@ -8,3 +8,7 @@ output "cloudfront_url" {
   description = "The URL of the CloudFront distribution"
   value       = module.frontend.cloudfront_url
 }
+
+output "cloudfront_public_url" {
+  value = module.frontend.cloudfront_public_url
+}
