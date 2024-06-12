@@ -52,6 +52,8 @@ resource "aws_cloudfront_distribution" "s3_distribution" {
     }
   }
 
+  price_class = "PriceClass_100"  # North America and Europe only
+
   tags = {
     Project = "${var.prefix}"
   }
