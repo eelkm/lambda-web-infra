@@ -41,7 +41,7 @@ resource "aws_cloudfront_distribution" "s3_distribution" {
   }
 
   viewer_certificate {
-    acm_certificate_arn      = "${var.certificate_arn}"
+    acm_certificate_arn      = aws_acm_certificate.cloudfront_cert.arn
     ssl_support_method       = "sni-only"
     minimum_protocol_version = "TLSv1.2_2021"
   }
@@ -59,16 +59,3 @@ resource "aws_cloudfront_distribution" "s3_distribution" {
   }
 }
 
-# A record for the CloudFront distribution
-
-resource "aws_route53_record" "cloudfront_record" {
-  zone_id = var.zone_id
-  name    = "${var.prefix}.${var.domain_name}"
-  type    = "A"
-
-  alias {
-    name                   = aws_cloudfront_distribution.s3_distribution.domain_name
-    zone_id                = aws_cloudfront_distribution.s3_distribution.hosted_zone_id
-    evaluate_target_health = false
-  }
-}

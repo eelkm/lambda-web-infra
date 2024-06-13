@@ -7,3 +7,7 @@ output "api_gateway_invoke_url" {
   value = "https://${aws_api_gateway_rest_api.myapi.id}.execute-api.${var.aws_region}.amazonaws.com/prod"
   description = "The URL used to invoke the API gateway."
 }
+
+output "api_public_url" {
+  value = "https://api${var.prefix}.${var.domain_name}"
+}

@@ -18,11 +18,6 @@ variable "ui_path" {
   type        = string
 }
 
-variable "certificate_arn" {
-  description = "ARN of the ACM certificate"
-  type        = string
-}
-
 variable "zone_id" {
   description = "Route 53 zone ID"
   type        = string

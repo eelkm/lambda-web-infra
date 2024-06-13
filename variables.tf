@@ -28,10 +28,6 @@ variable "ui_path" {
   default     = "../frontend"
 }
 
-variable "certificate_arn" {
-  description = "ARN of the ACM certificate for the CloudFront distribution"
-}
-
 variable "zone_id" {
   description = "Route 53 zone ID"
 }
