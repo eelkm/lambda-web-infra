@@ -9,7 +9,7 @@ resource "aws_cloudfront_distribution" "s3_distribution" {
   default_root_object = "index.html"
 
   aliases = [
-    "${var.prefix}.${var.domain_name}"
+    "${var.domain_name}"
   ]
 
   origin {

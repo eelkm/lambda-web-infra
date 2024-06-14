@@ -4,5 +4,5 @@ output "cloudfront_url" {
 }
 
 output "cloudfront_public_url" {
-  value = "https://${var.prefix}.${var.domain_name}"
+  value = "https://${var.domain_name}"
 }

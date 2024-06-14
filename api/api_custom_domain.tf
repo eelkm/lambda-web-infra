@@ -1,5 +1,5 @@
 resource "aws_acm_certificate" "api_cert" {
-  domain_name = "api${var.prefix}.${var.domain_name}"
+  domain_name = "api.${var.domain_name}"
   validation_method = "DNS"
 
   tags = {
@@ -26,7 +26,7 @@ resource "aws_route53_record" "api_cert_validation" {
 # Custom domain name for the API Gateway
 
 resource "aws_api_gateway_domain_name" "api_domain" {
-  domain_name              = "api${var.prefix}.${var.domain_name}"
+  domain_name              = "api.${var.domain_name}"
   regional_certificate_arn = aws_acm_certificate.api_cert.arn
 
   endpoint_configuration {
@@ -48,7 +48,7 @@ resource "aws_api_gateway_base_path_mapping" "api_mapping" {
 
 resource "aws_route53_record" "api_domain" {
   zone_id = var.zone_id
-  name    = "api${var.prefix}.${var.domain_name}"
+  name    = "api.${var.domain_name}"
   type    = "A"
 
   alias {

@@ -7,7 +7,7 @@ provider "aws" {
 # Certificate for the CloudFront distribution
 resource "aws_acm_certificate" "cloudfront_cert" {
   provider = aws.us_east_1
-  domain_name       = "${var.prefix}.${var.domain_name}"
+  domain_name       = "${var.domain_name}"
   validation_method = "DNS"
 
   tags = {
@@ -35,7 +35,7 @@ resource "aws_route53_record" "cloudfront_cert_validation" {
 # A record for the CloudFront distribution
 resource "aws_route53_record" "cloudfront_record" {
   zone_id = var.zone_id
-  name    = "${var.prefix}.${var.domain_name}"
+  name    = "${var.domain_name}"
   type    = "A"
 
   alias {

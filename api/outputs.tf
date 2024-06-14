@@ -9,5 +9,5 @@ output "api_gateway_invoke_url" {
 }
 
 output "api_public_url" {
-  value = "https://api${var.prefix}.${var.domain_name}"
+  value = "https://api.${var.domain_name}"
 }
