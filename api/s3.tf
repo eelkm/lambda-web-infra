@@ -31,3 +31,14 @@ resource "aws_s3_bucket_policy" "public_read_policy" {
     ]
   })
 }
+
+resource "aws_s3_bucket_cors_configuration" "cors_config" {
+  bucket = aws_s3_bucket.public_read_bucket.id
+
+  cors_rule {
+    allowed_headers = ["*"] 
+    allowed_methods = ["PUT", "HEAD", "GET"]
+    allowed_origins = ["*"] // TODO:: Change to specific orogins
+    expose_headers  = []
+  }
+}
