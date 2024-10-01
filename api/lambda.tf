@@ -13,6 +13,8 @@ resource "aws_lambda_function" "api_lambda" {
 
   role = aws_iam_role.lambda_exec.arn
 
+  timeout     = 30
+
   tags = {
     Project = "${var.prefix}"
   }
