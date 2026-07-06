@@ -86,7 +86,6 @@ resource "null_resource" "always_deploy" {
 
 resource "aws_api_gateway_deployment" "api_deployment" {
   rest_api_id = aws_api_gateway_rest_api.myapi.id
-  stage_name  = "${var.stage}"
 
   depends_on = [
     aws_api_gateway_integration.api_lambda_integration,
@@ -104,5 +103,15 @@ resource "aws_api_gateway_deployment" "api_deployment" {
 
   lifecycle {
     create_before_destroy = true
+  }
+}
+
+resource "aws_api_gateway_stage" "api_stage" {
+  rest_api_id   = aws_api_gateway_rest_api.myapi.id
+  deployment_id = aws_api_gateway_deployment.api_deployment.id
+  stage_name    = "${var.stage}"
+
+  tags = {
+    Project = "${var.prefix}"
   }
 }
